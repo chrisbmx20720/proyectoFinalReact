@@ -21,16 +21,16 @@ export function Routing() {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        
-        {/* Rutas protegidas */}
-        <Route element={<ProtectedRoutes />}>
-          <Route path='/admin' element={<Admin />}>
+        <Route path='/admin' element={<Admin />}>
             <Route path='products' element={<Products />} />
             <Route path='users' element={<Users />} />
             <Route path='media' element={<Media />} />
             <Route path='services' element={<Services />} />
             <Route path='settings' element={<Settings />} />
-          </Route>
+        </Route>
+        
+        <Route element={<ProtectedRoutes />}>
+         
         </Route>
       </Routes>
     </div>

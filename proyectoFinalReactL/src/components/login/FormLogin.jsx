@@ -1,69 +1,78 @@
-import {React, useEffect,useState} from 'react'
-import {useNavigate} from 'react-router-dom';
-import { getUsers } from '../../services/GetUsers'
-import ProtectedRoutes from '../../routes/private/ProtectedRoutes';
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getUsers } from '../../services/GetUsers';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './FormLogin.css'; // Make sure to create this file for custom styles
 
 export default function FormLogin() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const login = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    const [users, setUsers] = useState([]); 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    try {
+      const usersData = await getUsers();
+      setUsers(usersData);
 
-    const login = async (e) =>{
-      e.preventDefault();
-      
-     
+      const user = usersData.find(user => user.email === email && user.password === password);
 
-      console.log("LLegamos al submit al menos");
-      
-        try {
-          const usersData = await getUsers();
-          setUsers(usersData);
-
-          const user = usersData.find(user => user.email === email && user.password === password )
-
-          console.log(user);
-          
-          if(user !== undefined){
-            alert("Usuario Autenticado");
-            <ProtectedRoutes user={user}/>
-          }
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
-        }
+      if (user) {
+        alert("User Authenticated");
+        navigate('/protected'); // Change '/protected' to the route you need
+      } else {
+        alert("Incorrect email or password");
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
+  };
 
   return (
-    <div>
-     <form onSubmit={login}>
-      <div>
-        <label>email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <Container className="login-container">
+      <div className="login-form">
+        <h2 className="text-center mb-4">Login</h2>
+        <Form onSubmit={login}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label className="form-label">Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="form-input"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label className="form-label">Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="form-input"
+            />
+          </Form.Group>
+
+          {error && <Alert variant="danger">{error}</Alert>}
+
+          <Button variant="primary" type="submit" disabled={loading} className="w-100">
+            {loading ? 'Loading...' : 'Login'}
+          </Button>
+        </Form>
       </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    </div>
-  )
+    </Container>
+  );
 }
