@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --port 5000 --open",
+    "start": "vite --port 9000 --open",
     "server": "json-server --watch data/db.json --port 3000",
+    "upload": "node backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -13,7 +14,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "json-server": "^1.0.0-beta.2",
     "multer": "^1.4.5-lts.1",

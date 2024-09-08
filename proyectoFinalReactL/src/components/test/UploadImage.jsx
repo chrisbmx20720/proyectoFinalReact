@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function UploadImage() {
+export function UploadImage() {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
 
@@ -11,6 +12,11 @@ export default function UploadImage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!file) {
+      setMessage('Por favor selecciona un archivo.');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('image', file);
 
@@ -23,18 +29,31 @@ export default function UploadImage() {
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error subiendo la imagen');
-      console.error(error);
+      console.error('Error al subir la imagen:', error);
     }
   };
 
   return (
-    <div>
-      <h1>Subir Imagen</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} accept="image/*" />
-        <button type="submit">Subir</button>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Subir Imagen</h1>
+      <form onSubmit={handleSubmit} className="border p-4 rounded shadow-sm">
+        <div className="form-group mb-3">
+          <label htmlFor="fileInput" className="form-label">Selecciona una imagen</label>
+          <input
+            type="file"
+            className="form-control"
+            id="fileInput"
+            onChange={handleFileChange}
+            accept="image/*"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary btn-block">Subir</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && (
+        <div className={`mt-3 alert ${message.includes('Error') ? 'alert-danger' : 'alert-success'}`}>
+          {message}
+        </div>
+      )}
     </div>
   );
 }
