@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login } from '../../store/authSlice';
+import { login } from '../../slices/authSlice';
 import { getUsers } from '../../services/GetUsers';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +26,8 @@ export default function FormLogin() {
 
       if (user) {
         dispatch(login(user));
-        navigate('/protected');
+        alert("Welcome Back", user.username)
+        navigate("/admin");
       } else {
         setError("Incorrect email or password");
       }
