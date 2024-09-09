@@ -12,7 +12,6 @@ const AdminDashboard = () => {
         
         {/* Barra lateral izquierda */}
         <div className="bg-dark col-2 py-4">
-          <h6 className="p-2 mb-4 text-light">Admin Dashboard</h6>
 
           <Nav className="flex-column">
             <Nav.Item className="mb-3">
