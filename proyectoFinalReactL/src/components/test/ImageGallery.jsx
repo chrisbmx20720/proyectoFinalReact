@@ -34,10 +34,12 @@ export function ImageGallery() {
             <div className="col-md-4 mb-3" key={image.id}>
               <div className="card">
                 <img
-                  src={`http://localhost:5000/uploads/${image.filename}`}
+                  src={`localhost:5000/uploads/${image.filename}`}
                   alt={image.alt_text || 'Imagen de la galería'}
                   className="card-img-top"
                 />
+
+                <p>{image.filename}</p>
                 <div className="card-body">
                   <p className="card-text">{image.title}</p>
                 </div>
