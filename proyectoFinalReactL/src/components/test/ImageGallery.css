@@ -1,0 +1,14 @@
+.image-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .image-square {
+    object-fit: cover; /* Hace que la imagen se recorte si es necesario */
+    width: 100%;
+    height: 280px; /* Puedes ajustar el tamaño de altura deseado */
+    border-radius: 0; /* Asegúrate de que no haya bordes redondeados */
+  }
+  

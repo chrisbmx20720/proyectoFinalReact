@@ -96,5 +96,29 @@ export async function PutUser(user) {
 }
 
 
+export async function DeleteUser(id) {
+
+    try {
+        const response = await fetch(`http://localhost:3000/users/${id}`,{
+
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error deleting user with id ${id}`);
+        }
+
+        return { message: `User with id ${id} deleted successfully` };
+    
+      } catch (error) {
+        throw error;
+      }
+ 
+}
+
+
   
 

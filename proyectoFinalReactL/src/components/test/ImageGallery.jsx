@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './ImageGallery.css'; // Importa el archivo CSS personalizado
 
 export function ImageGallery() {
   const [images, setImages] = useState([]);
@@ -23,6 +24,12 @@ export function ImageGallery() {
     fetchImages();
   }, []);
 
+  // Función para manejar el clic en la imagen
+  const handleImageClick = (id) => {
+    console.log('ID de la imagen seleccionada:', id);
+    // Aquí puedes agregar cualquier lógica adicional que desees al hacer clic en la imagen
+  };
+
   return (
     <div className="container mt-5">
       <h1 className="text-center mb-4">Galería de Imágenes</h1>
@@ -31,14 +38,14 @@ export function ImageGallery() {
       <div className="row">
         {images.length > 0 ? (
           images.map((image) => (
-            <div className="col-md-4 mb-3" key={image.id}>
-              <div className="card">
+            <div className="col-md-3 mb-3" key={image.id}>
+              <div className="card image-card">
                 <img
                   src={`http://localhost:5000/uploads/${image.filename}`}
                   alt={image.alt_text || 'Imagen de la galería'}
-                  className="card-img-top"
+                  className="card-img-top image-square"
+                  onClick={() => handleImageClick(image.id)} // Evento onClick para capturar el ID
                 />
-
               </div>
             </div>
           ))
