@@ -3,6 +3,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Outlet, Link } from 'react-router-dom';
+import '../styles/Admin.css'
 
 const AdminDashboard = () => {
   return (
@@ -11,32 +12,32 @@ const AdminDashboard = () => {
       <Container fluid className="d-flex min-vh-100 px-0">
         
         {/* Barra lateral izquierda */}
-        <div className="bg-dark col-2 py-4">
+        <div className="bg-dark col-1 py-4">
 
           <Nav className="flex-column">
             <Nav.Item className="mb-3">
               <Nav.Link as={Link} to="/admin/products" className="text-light">
-                <i className="fas fa-box mr-2"></i> Products
+                <i className="fas fa-box mr-2"></i> <span className="menu-text">Products</span>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item className="mb-3">
               <Nav.Link as={Link} to="/admin/users" className="text-light">
-                <i className="fas fa-users mr-2"></i> Users
+                <i className="fas fa-users mr-2"></i> <span className="menu-text">Users</span>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item className="mb-3">
               <Nav.Link as={Link} to="/admin/media" className="text-light">
-                <i className="fas fa-photo-video mr-2"></i> Media
+                <i className="fas fa-photo-video mr-2"></i> <span className="menu-text">Media</span>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item className="mb-3">
               <Nav.Link as={Link} to="/admin/settings" className="text-light">
-                <i className="fas fa-cog mr-2"></i> Settings
+                <i className="fas fa-cog mr-2"></i> <span className="menu-text">Settings</span>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item className="mb-3">
               <Nav.Link as={Link} to="/admin/services" className="text-light">
-                <i className="fas fa-briefcase mr-2"></i> Services
+                <i className="fas fa-briefcase mr-2"></i> <span className="menu-text">Services</span>
               </Nav.Link>
             </Nav.Item>
           </Nav>

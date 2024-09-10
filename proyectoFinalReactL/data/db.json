@@ -2,9 +2,19 @@
   "users": [
     {
       "id": "d1a5",
+      "name": "Christian",
       "email": "christian@hotmail.com",
       "username": "chrisbmx",
       "password": "010101"
+    },
+    {
+      "id": "30e9",
+      "name": "Manuel",
+      "lastname": "Acevedo",
+      "phone": "78596874",
+      "email": "manu@gmail.com",
+      "username": "manubmx",
+      "password": "020202"
     }
   ]
 }

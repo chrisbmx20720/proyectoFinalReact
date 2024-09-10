@@ -1,9 +1,10 @@
 import React from 'react'
+import UserComponent from '../../components/user/UserComponent'
 
 export default function Users() {
   return (
     <div>
-      Users Works!
+      <UserComponent/>
     </div>
   )
 }

@@ -5,7 +5,10 @@ import { login } from '../../slices/authSlice';
 import { getUsers } from '../../services/GetUsers';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './FormLogin.css'; 
+import './FormLogin.css';
+
+import {toast } from 'react-toastify';
+
 
 export default function FormLogin() {
   const navigate = useNavigate();
@@ -26,8 +29,15 @@ export default function FormLogin() {
 
       if (user) {
         dispatch(login(user));
-        alert("Welcome Back", user.username)
-        navigate("/admin");
+
+        toast.success("Welcome Back",{
+          autoClose: 1500
+          })
+
+        setTimeout(()=>{
+          navigate("/admin");
+        },2000)
+        
       } else {
         setError("Incorrect email or password");
       }
@@ -39,6 +49,8 @@ export default function FormLogin() {
   };
 
   return (
+
+   
     <Container className="login-container d-flex justify-content-center align-items-center min-vh-100">
       <div className="login-form p-4 bg-light border rounded shadow-sm">
         <h2 className="text-center mb-4">Login</h2>
@@ -72,6 +84,10 @@ export default function FormLogin() {
           </Button>
         </Form>
       </div>
+
+      
     </Container>
+
+    
   );
 }
