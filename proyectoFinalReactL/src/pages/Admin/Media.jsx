@@ -1,9 +1,9 @@
 import {React,useState} from 'react'
 import { ImageGallery } from '../../components/test/ImageGallery'
+import {UploadImage} from '../../components/test/UploadImage'
 
 export default function Media() {
-  const st = false;
-  cons [state, setState] = useState();
+
   return (
     <div>
       <UploadImage/>

@@ -1,11 +1,13 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getUsers } from '../../services/GetUsers';
 import { Table } from 'react-bootstrap';
-import EditUserForm from '../user/EditUserForm'
+import Users from '../../pages/Admin/Users'
 
 export default function UserComponent() {
 
     const [users, setUsers] = useState([]);
+    const navigate  = useNavigate();
 
     useEffect(() => {
         const getUsuarios = async () => {
@@ -21,7 +23,7 @@ export default function UserComponent() {
     }, []);
 
     const editUser = (id) => {
-        console.log("Edit user with id:", id);
+        navigate(`edit-user/${id}`)
     };
 
     const removeUser = (id) => {
@@ -45,7 +47,7 @@ export default function UserComponent() {
                             <td>
                                 {user.name + " " + user.lastname} 
                                 <a
-                                    onClick={editUser(user.id)}  // Corregido el onClick
+                                    onClick={() => editUser(user.id)}  // Corregido el onClick
                                     className="mx-2">
                                     Edit
                                 </a>

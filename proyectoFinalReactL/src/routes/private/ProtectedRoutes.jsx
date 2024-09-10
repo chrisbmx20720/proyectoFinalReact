@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 
-export default function ProtectedRoutes({children,redirectTo ="/"}) {
+export default function ProtectedRoutes({children, redirectTo ="/"}) {
 
     const { isAuthenticated, user } = useSelector((state) => state.auth);
 

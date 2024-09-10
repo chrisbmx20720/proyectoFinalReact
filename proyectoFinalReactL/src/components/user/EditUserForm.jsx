@@ -1,10 +1,10 @@
 import {React, useState,useEffect} from 'react'
 import { getUserById } from '../../services/GetUsers';
 
-export default function EditUserForm(id) {
+export default function EditUserForm({id}) {
 
     const [user, setUser] = useState(null);
-
+  
     useEffect(()=>{
         const getUser = async (id) =>{
             try {

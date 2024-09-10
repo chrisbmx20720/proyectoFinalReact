@@ -1,48 +1,60 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Alert, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import PostUser from '../../services/PostUser';
-import './RegisterUser.css'; // Asegúrate de crear este archivo para los estilos personalizados
+import { useParams } from 'react-router-dom';
+import { React, useState, useEffect } from 'react';
+import { getUserById } from '../../services/GetUsers';
+import { Container, Form, Row, Col, Button, Alert } from 'react-bootstrap';
 
-export default function RegisterUser() {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+export default function EditUser() {
+  const [user, setUser] = useState({
+    name: '',
+    lastname: '',
+    phone: '',
+    email: '',
+    username: '',
+    password: ''
+  });
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+
+  // Mover la lógica de obtener usuario dentro de useEffect
+  useEffect(() => {
+    const getUser = async (id) => {
+      try {
+        const fetchedUser = await getUserById(id);
+        setUser(fetchedUser);
+      } catch (error) {
+        console.log("Error fetching user:", error);
+        setError("Error fetching user data");
+      }
+    };
+
+    if (id) {
+      getUser(id);
+    }
+  }, [id]);
+
+  // Manejador de cambio general para todos los campos
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    const newUser = {
-      name,
-      lastname,
-      phone,
-      email,
-      username,
-      password,
-    };
-
-    try {
-      await PostUser(newUser);
-      alert('User registered successfully');
-      // Puedes navegar a otra ruta o limpiar el formulario
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    console.log("Enviando datos del usuario:", user);
+    // Aquí agregarías la lógica para guardar los cambios del usuario
+    setLoading(false);
   };
 
   return (
-    
     <Container className="register-container">
       <div className="register-form">
-        <h2 className="text-center mb-4">Register</h2>
+        <h2 className="text-center mb-4">Edit User</h2>
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col md={6}>
@@ -50,9 +62,10 @@ export default function RegisterUser() {
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
+                  name="name"
                   placeholder="Enter your name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={user.name}
+                  onChange={handleChange}
                   required
                 />
               </Form.Group>
@@ -62,9 +75,10 @@ export default function RegisterUser() {
                 <Form.Label>Lastname</Form.Label>
                 <Form.Control
                   type="text"
+                  name="lastname"
                   placeholder="Enter your lastname"
-                  value={lastname}
-                  onChange={(e) => setLastName(e.target.value)}
+                  value={user.lastname}
+                  onChange={handleChange}
                   required
                 />
               </Form.Group>
@@ -77,9 +91,10 @@ export default function RegisterUser() {
                 <Form.Label>Phone</Form.Label>
                 <Form.Control
                   type="text"
+                  name="phone"
                   placeholder="Enter your phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  value={user.phone}
+                  onChange={handleChange}
                   required
                 />
               </Form.Group>
@@ -89,9 +104,10 @@ export default function RegisterUser() {
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={user.email}
+                  onChange={handleChange}
                   required
                 />
               </Form.Group>
@@ -102,9 +118,10 @@ export default function RegisterUser() {
             <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
+              name="username"
               placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={user.username}
+              onChange={handleChange}
               required
             />
           </Form.Group>
@@ -113,9 +130,10 @@ export default function RegisterUser() {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
+              name="password"
               placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={user.password}
+              onChange={handleChange}
               required
             />
           </Form.Group>
@@ -123,7 +141,7 @@ export default function RegisterUser() {
           {error && <Alert variant="danger">{error}</Alert>}
 
           <Button variant="primary" type="submit" disabled={loading} className="w-100">
-            {loading ? 'Loading...' : 'Register'}
+            {loading ? 'Loading...' : 'Save Changes'}
           </Button>
         </Form>
       </div>

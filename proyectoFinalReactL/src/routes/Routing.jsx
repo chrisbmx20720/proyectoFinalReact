@@ -10,6 +10,7 @@ import Media from '../pages/Admin/Media';
 import Services from '../pages/Admin/Services';
 import Settings from '../pages/Admin/Settings';
 import ProtectedRoutes from './private/ProtectedRoutes';
+import EditUser from '../pages/Admin/EditUser';
 
 export function Routing() {
   const user = false; // Cambia esta lógica según tu autenticación real
@@ -21,10 +22,11 @@ export function Routing() {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route element={<ProtectedRoutes />}>
-          <Route path='/admin' element={<Admin />}>
+        <Route element={<ProtectedRoutes/>}>
+          <Route path='/admin' element={<Admin/>}>
               <Route path='products' element={<Products />} />
-              <Route path='users' element={<Users />} />
+              <Route path='users' element={<Users />}/>
+              <Route path="users/edit-user/:id" element={<EditUser/>}/> 
               <Route path='media' element={<Media />} />
               <Route path='services' element={<Services />} />
               <Route path='settings' element={<Settings />} />
