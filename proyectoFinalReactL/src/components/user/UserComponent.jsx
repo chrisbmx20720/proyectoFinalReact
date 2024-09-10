@@ -1,8 +1,7 @@
 import { React, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUsers } from '../../services/GetUsers';
+import { getUsers } from '../../services/UserService';
 import { Table } from 'react-bootstrap';
-import Users from '../../pages/Admin/Users'
 
 export default function UserComponent() {
 

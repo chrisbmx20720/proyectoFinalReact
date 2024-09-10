@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation,Link } from 'react-router-dom'; // Hook to get current route
+import { useLocation,Link } from 'react-router-dom'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../slices/authSlice';
 import './Navbar.css';
@@ -7,11 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 export default function MyNavbar() {
-  const location = useLocation(); // Hook to get current route
+  const location = useLocation(); 
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  // Determine the brand text based on the current route
+  
   const getBrandText = () => {
     if (location.pathname === '/login') {
       return 'Login';

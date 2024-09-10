@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Alert, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PostUser from '../../services/PostUser';
-import './RegisterUser.css'; // Asegúrate de crear este archivo para los estilos personalizados
+import {PostUser}  from '../../services/UserService';
+import './RegisterUser.css'; 
 
 export default function RegisterUser() {
   const [email, setEmail] = useState('');
@@ -39,7 +39,6 @@ export default function RegisterUser() {
   };
 
   return (
-    
     <Container className="register-container">
       <div className="register-form">
         <h2 className="text-center mb-4">Register</h2>
@@ -71,8 +70,7 @@ export default function RegisterUser() {
             </Col>
           </Row>
 
-          <Row>
-            <Col md={6}>
+          
               <Form.Group className="mb-3" controlId="formPhone">
                 <Form.Label>Phone</Form.Label>
                 <Form.Control
@@ -83,8 +81,7 @@ export default function RegisterUser() {
                   required
                 />
               </Form.Group>
-            </Col>
-            <Col md={6}>
+            
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -95,9 +92,7 @@ export default function RegisterUser() {
                   required
                 />
               </Form.Group>
-            </Col>
-          </Row>
-
+      
           <Form.Group className="mb-3" controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control

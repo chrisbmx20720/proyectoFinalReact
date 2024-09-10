@@ -1,22 +1,22 @@
 {
   "users": [
     {
-      "id": "d1a5",
-      "name": "Christian",
+      "name": "Christian Horatio",
       "lastname": "Acevedo",
       "phone": "78596874",
       "email": "christian@hotmail.com",
       "username": "chrisbmx",
-      "password": "010101"
+      "password": "010101",
+      "id": "d1a5"
     },
     {
-      "id": "30e9",
-      "name": "Manuel",
+      "name": "Manuel Maa",
       "lastname": "Acevedo",
-      "phone": "78596874",
+      "phone": "8998856",
       "email": "manu@gmail.com",
       "username": "manubmx",
-      "password": "020202"
+      "password": "020202",
+      "id": "30e9"
     }
   ]
 }

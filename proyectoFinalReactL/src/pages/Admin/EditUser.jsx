@@ -1,9 +1,12 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
-import { getUserById } from '../../services/GetUsers';
-import { Container, Form, Row, Col, Button, Alert } from 'react-bootstrap';
+import { getUserById, PutUser } from '../../services/UserService';
+import { Container, Form, Row, Col, Button, Alert, Nav } from 'react-bootstrap';
+import {toast } from 'react-toastify';
 
 export default function EditUser() {
+    const navigate = useNavigate();
+
   const [user, setUser] = useState({
     name: '',
     lastname: '',
@@ -17,7 +20,6 @@ export default function EditUser() {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  // Mover la lógica de obtener usuario dentro de useEffect
   useEffect(() => {
     const getUser = async (id) => {
       try {
@@ -34,27 +36,51 @@ export default function EditUser() {
     }
   }, [id]);
 
-  // Manejador de cambio general para todos los campos
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
+    setUser({...user, [name] : value,
+
+      
     });
+
+    console.log(user);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    
     setLoading(true);
-    console.log("Enviando datos del usuario:", user);
-    // Aquí agregarías la lógica para guardar los cambios del usuario
-    setLoading(false);
+
+    
+    try {
+     await PutUser(user);
+     
+     toast.success("User updated successfully !",{
+      autoClose: 1000
+      })
+
+    setTimeout(()=>{
+      navigate('/admin/users');
+    },1500)
+    
+   
+
+    } catch (err) {
+        console.log('SE CAE SIN RAZON');
+        setError(err.message);
+    } finally {
+      setLoading(false);
+    
   };
+  }
 
   return (
     <Container className="register-container">
       <div className="register-form">
         <h2 className="text-center mb-4">Edit User</h2>
+
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col md={6}>
@@ -84,9 +110,7 @@ export default function EditUser() {
               </Form.Group>
             </Col>
           </Row>
-
-          <Row>
-            <Col md={6}>
+  
               <Form.Group className="mb-3" controlId="formPhone">
                 <Form.Label>Phone</Form.Label>
                 <Form.Control
@@ -98,8 +122,7 @@ export default function EditUser() {
                   required
                 />
               </Form.Group>
-            </Col>
-            <Col md={6}>
+
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -111,9 +134,7 @@ export default function EditUser() {
                   required
                 />
               </Form.Group>
-            </Col>
-          </Row>
-
+           
           <Form.Group className="mb-3" controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control

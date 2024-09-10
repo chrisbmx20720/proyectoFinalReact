@@ -13,7 +13,6 @@ import ProtectedRoutes from './private/ProtectedRoutes';
 import EditUser from '../pages/Admin/EditUser';
 
 export function Routing() {
-  const user = false; // Cambia esta lógica según tu autenticación real
   
   return (
     <div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../slices/authSlice';
-import { getUsers } from '../../services/GetUsers';
+import { getUsers } from '../../services/UserService';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './FormLogin.css';
@@ -31,12 +31,12 @@ export default function FormLogin() {
         dispatch(login(user));
 
         toast.success("Welcome Back",{
-          autoClose: 1500
+          autoClose: 1000
           })
 
         setTimeout(()=>{
           navigate("/admin");
-        },2000)
+        },1500)
         
       } else {
         setError("Incorrect email or password");
