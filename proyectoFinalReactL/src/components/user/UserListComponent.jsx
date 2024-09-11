@@ -1,74 +1,66 @@
-import { React, useEffect, useState} from 'react';
+import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUsers, DeleteUser } from '../../services/UserService';
 import { Table } from 'react-bootstrap';
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
-
-
-
-
-export default function UserComponent() {
-
+export default function UserListComponent() {
     const [users, setUsers] = useState([]);
-    const [userID , setId] = useState('')
-    const navigate  = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getUsuarios = async () => {
             try {
-                setUsers(await getUsers());
+                const fetchedUsers = await getUsers();
+                setUsers(fetchedUsers);
             } catch (error) {
                 console.log("There was an Error");
             }
         };
-
         getUsuarios();
-
     }, []);
 
     const editUser = (id) => {
-        navigate(`edit-user/${id}`)
+        navigate(`edit-user/${id}`);
     };
 
     function CustomToast({ closeToast, onYes, onCancel }) {
         return (
-            <div>
+            <div className='mt-4'>
                 <p>Are you sure you want to proceed?</p>
                 <button className='btn btn-success' onClick={onYes} style={{ marginRight: '10px' }}>Yes</button>
-                <button className ="btn btn-danger" onClick={onCancel}>Cancel</button>
+                <button className="btn btn-danger" onClick={onCancel}>Cancel</button>
             </div>
         );
     }
 
-    const handleYes = async () => {
-        await(DeleteUser(userID))
-
-        toast.dismiss(); 
-
-        toast.success("User Deleted Successfully!");
-        navigate('/admin/users');
+    const handleYes = async (id) => {
+        try {
+            console.log("Deleting user with ID:", id);
+            await DeleteUser(id);  // Usa el ID directamente
+            toast.success("User Deleted Successfully!");
+            setUsers(users.filter(user => user.id !== id)); // Actualiza la lista de usuarios
+        } catch (error) {
+            toast.error("Error deleting user");
+        } finally {
+            toast.dismiss();
+        }
     };
 
     const handleCancel = () => {
         console.log("User clicked Cancel");
-        toast.dismiss(); // Cerrar el toast
+        toast.dismiss(); // Cierra el toast
     };
 
     const showCustomToast = (id) => {
-        setId(id);
-
-        toast(<CustomToast onYes={handleYes} onCancel={handleCancel} />, {
+        toast(<CustomToast onYes={() => handleYes(id)} onCancel={handleCancel} />, {
             position: "top-center",
-            autoClose: false, // Para que no se cierre automáticamente
+            autoClose: false, // Eliminar el cierre automático para permitir la interacción
             closeOnClick: false,
             closeButton: false,
-            draggable: false,
+            draggable: true,
         });
     };
-
-
-
 
     return (
         <div>
@@ -85,20 +77,19 @@ export default function UserComponent() {
                     {users.map((user, index) => (
                         <tr key={index}>
                             <td>
-                                <h6>{user.name + " " + user.lastname} </h6>
+                                <h6>{user.name + " " + user.lastname}</h6>
                                 <div className="actions-container">
-                                <a
-                                    onClick={() => editUser(user.id)}  // Corregido el onClick
-                                    className="mr-2">
-                                    Edit
-                                </a>
-                                <a
-                                    onClick={() => showCustomToast(user.id)} // Corregido el onClick
-                                    className="mx-2 text-danger">
-                                    Remove
-                                </a>
+                                    <a
+                                        onClick={() => editUser(user.id)}
+                                        className="mr-2">
+                                        Edit
+                                    </a>
+                                    <a
+                                        onClick={() => showCustomToast(user.id)}
+                                        className="mx-2 text-danger">
+                                        Remove
+                                    </a>
                                 </div>
-                                
                             </td>
                             <td>{user.email}</td>
                             <td>{user.phone}</td>

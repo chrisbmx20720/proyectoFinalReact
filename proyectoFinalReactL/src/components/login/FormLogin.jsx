@@ -30,7 +30,7 @@ export default function FormLogin() {
       if (user) {
         dispatch(login(user));
 
-        toast.success("Welcome Back",{
+        toast.success(`Welcome Back, ${user.name}`,{
           autoClose: 1000
           })
 

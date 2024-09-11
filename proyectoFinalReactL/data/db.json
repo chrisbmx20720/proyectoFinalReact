@@ -1,33 +1,6 @@
 {
   "users": [
     {
-      "name": "Maria",
-      "lastname": "Gomez",
-      "phone": "78965432",
-      "email": "maria.gomez@gmail.com",
-      "username": "mariag23",
-      "password": "password123",
-      "id": "b002"
-    },
-    {
-      "name": "Juan",
-      "lastname": "Perez",
-      "phone": "76459873",
-      "email": "juan.perez@gmail.com",
-      "username": "juanp1990",
-      "password": "ju4nperez",
-      "id": "b003"
-    },
-    {
-      "name": "Carlos",
-      "lastname": "Garcia",
-      "phone": "75896321",
-      "email": "carlos.garcia@gmail.com",
-      "username": "cgarcia75",
-      "password": "carlospass",
-      "id": "b005"
-    },
-    {
       "name": "Miguel",
       "lastname": "Fernandez",
       "phone": "71234568",
@@ -145,13 +118,13 @@
       "id": "b019"
     },
     {
-      "name": "Isabella",
-      "lastname": "Reyes",
-      "phone": "75982643",
-      "email": "isabella.reyes@gmail.com",
-      "username": "isareyes",
-      "password": "reyesisa",
-      "id": "b020"
+      "id": "8ecd",
+      "name": "Manuel",
+      "lastname": "Acevedo",
+      "phone": "78596874",
+      "email": "manu@gmail.com",
+      "username": "manubmx20",
+      "password": "010101"
     }
   ]
 }

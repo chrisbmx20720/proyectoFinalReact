@@ -68,7 +68,6 @@ export default function EditUser() {
    
 
     } catch (err) {
-        console.log('SE CAE SIN RAZON');
         setError(err.message);
     } finally {
       setLoading(false);

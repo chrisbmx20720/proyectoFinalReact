@@ -32,7 +32,7 @@ export function ImageGallery() {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center mb-4">Galería de Imágenes</h1>
+      
       {loading && <p className="text-center">Cargando imágenes...</p>}
       {error && <p className="text-center text-danger">{error}</p>}
       <div className="row">

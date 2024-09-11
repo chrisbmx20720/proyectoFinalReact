@@ -32,7 +32,7 @@ export default function MyNavbar() {
     <Container fluid className="w-100 bg-dark header-nav">
 
       <Container>
-        <h2 className='text-light mb-2 mt-2 text-start' >{getBrandText()}</h2>
+        <h4 className='text-light mb-2 mt-2 text-start' >{getBrandText()}</h4>
       </Container>
       <Navbar bg="dark" variant="dark" expand="lg">
   
@@ -53,7 +53,7 @@ export default function MyNavbar() {
             </Nav.Item>
           </Nav>
           {isAuthenticated && (
-            <Button variant="outline-light" onClick={handleLogout}>
+            <Button className='mx-3' variant="outline-light" onClick={handleLogout}>
               Logout
             </Button>
           )}

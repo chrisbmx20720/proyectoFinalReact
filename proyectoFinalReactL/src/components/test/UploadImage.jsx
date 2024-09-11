@@ -35,10 +35,8 @@ export function UploadImage() {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center mb-4">Subir Imagen</h1>
       <form onSubmit={handleSubmit} className="border p-4 rounded shadow-sm">
         <div className="form-group mb-3">
-          <label htmlFor="fileInput" className="form-label">Selecciona una imagen</label>
           <input
             type="file"
             className="form-control"
