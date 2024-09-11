@@ -64,14 +64,7 @@ export async function PutUser(user) {
 
     console.log("UserID :", user.id)
 
-    const userData = {
-        "name":user.name,
-        "lastname":user.lastname,
-        "phone":user.phone,
-        "email": user.email,
-        "username": user.username,
-        "password": user.password
-    }
+    const userData = user
 
     try {
         const response = await fetch(`http://localhost:3000/users/${user.id}`,{

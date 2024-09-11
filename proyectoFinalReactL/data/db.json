@@ -19,31 +19,13 @@
       "id": "b008"
     },
     {
-      "name": "Diego",
-      "lastname": "Hernandez",
-      "phone": "75649821",
-      "email": "diego.hernandez@gmail.com",
-      "username": "diegoh81",
-      "password": "diegoh1234",
-      "id": "b009"
-    },
-    {
-      "name": "Ana",
+      "name": "Maria",
       "lastname": "Morales",
       "phone": "71239845",
       "email": "ana.morales@gmail.com",
       "username": "anamorale87",
       "password": "moralesana",
       "id": "b010"
-    },
-    {
-      "name": "Roberto",
-      "lastname": "Diaz",
-      "phone": "75412863",
-      "email": "roberto.diaz@gmail.com",
-      "username": "robertd",
-      "password": "diaz1234",
-      "id": "b011"
     },
     {
       "name": "Laura",
@@ -109,7 +91,7 @@
       "id": "b018"
     },
     {
-      "name": "Francisco",
+      "name": "Francisco vaneso",
       "lastname": "Cortes",
       "phone": "76548932",
       "email": "francisco.cortes@gmail.com",
@@ -124,6 +106,15 @@
       "phone": "78596874",
       "email": "manu@gmail.com",
       "username": "manubmx20",
+      "password": "010101"
+    },
+    {
+      "id": "d6c9",
+      "name": "Mafer",
+      "lastname": "Garita",
+      "phone": "83314789",
+      "email": "mag@gmail.com",
+      "username": "mafer",
       "password": "010101"
     }
   ]

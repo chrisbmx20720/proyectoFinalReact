@@ -45,7 +45,7 @@ export function UploadImage() {
             accept="image/*"
           />
         </div>
-        <button type="submit" className="btn btn-primary btn-block">Subir</button>
+        <button type="submit" className="btn btn-dark btn-block">Subir</button>
       </form>
       {message && (
         <div className={`mt-3 alert ${message.includes('Error') ? 'alert-danger' : 'alert-success'}`}>
