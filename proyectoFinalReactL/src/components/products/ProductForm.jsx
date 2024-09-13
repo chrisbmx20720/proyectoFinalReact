@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { toast } from 'react-toastify';
 import MediaComponent from '../media/MediaComponent';
 import './Product.css';
+import {PostProduct} from '../../services/ProductService'
 
 export default function ProductForm() {
   const [product, setProduct] = useState({
@@ -31,7 +32,7 @@ export default function ProductForm() {
     },
   });
 
-  // Manejar cambios en los campos de texto, checkbox, etc.
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setProduct({
@@ -40,17 +41,26 @@ export default function ProductForm() {
     });
   };
 
-  // Enviar formulario completo del producto
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Product Submitted:', product);
-    // Lógica para enviar datos al backend
+
+    try {
+      await PostProduct(product);
+      toast.success("Product Registered Successfully");
+      
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+
   };
 
-  // Abrir el selector de imagen destacada (MediaComponent)
+
   const handleFeaturedImage = () => {
     toast(
-      <MediaComponent onImageSubmit={handleImageSubmit} />, // Pasar función para manejar la imagen
+      <MediaComponent onImageSubmit={handleImageSubmit} />, 
       {
         position: 'top-left',
         className: 'toast-left-full',

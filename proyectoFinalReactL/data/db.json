@@ -117,5 +117,107 @@
       "username": "mafer",
       "password": "010101"
     }
+  ],
+  "products": [
+    {
+      "id": "47d3",
+      "name": "Mayonesa",
+      "description": "Esto es una mayonesa",
+      "excerpt": "mayonesa",
+      "provider": "lizano",
+      "quantity": "24",
+      "isFeatured": true,
+      "height": "15",
+      "width": "10",
+      "price": "5",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1725864923265-reviews-and-reputation.png"
+      }
+    },
+    {
+      "id": "0b3e",
+      "name": "Yuca",
+      "description": "Esto es una yuca",
+      "excerpt": "e;f,e;f;eff",
+      "provider": "Yucaneza",
+      "quantity": "-4",
+      "isFeatured": false,
+      "height": "58",
+      "width": "9",
+      "price": "2489",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1725894545689-brain-health.png"
+      }
+    },
+    {
+      "id": "c9f9",
+      "name": "logo",
+      "description": "c, rkv rvlr ",
+      "excerpt": "eclmelcem4rlv",
+      "provider": "Marco",
+      "quantity": "2",
+      "isFeatured": false,
+      "height": "0",
+      "width": "",
+      "price": "1500",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "esto es un logo",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1725979951531-RealLocalPartners_logo.png"
+      }
+    },
+    {
+      "id": "944c",
+      "name": "Eidrian",
+      "description": "uhuinij",
+      "excerpt": "kjijij9i",
+      "provider": "kjimomi",
+      "quantity": "",
+      "isFeatured": false,
+      "height": "",
+      "width": "",
+      "price": "",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1726094219187-bread_breakfast_bakery_pastry_icon_220866.png"
+      }
+    },
+    {
+      "id": "5626",
+      "name": "Christian",
+      "description": "  mgkbkbkbkbk",
+      "excerpt": "hfjfjfjgjgjgjgjgjgjgjgjgjg",
+      "provider": "yo",
+      "quantity": "",
+      "isFeatured": false,
+      "height": "1",
+      "width": "",
+      "price": "",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1726252858905-IMG_20240806_105258 - Tukun Tukuncr.jpg"
+      }
+    }
   ]
 }
