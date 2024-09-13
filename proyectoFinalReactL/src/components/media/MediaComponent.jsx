@@ -1,7 +1,6 @@
-// MediaComponent.jsx
 import React, { useState } from 'react';
 import { Container, Row, Col, Tab, Tabs, Form, Button } from 'react-bootstrap';
-import './MediaComponent.css'; // Importamos archivo CSS personalizado
+import './MediaComponent.css'; 
 import { UploadImage } from '../test/UploadImage';
 import { ImageGallery } from '../test/ImageGallery';
 
@@ -12,6 +11,16 @@ const MediaComponent = () => {
     url: '',
     title: '',
   });
+
+
+  // Función para manejar la selección de imagen desde ImageGallery
+  const handleImageSelect = (imageId) => {
+    // Aquí puedes actualizar el formulario con los detalles de la imagen seleccionada
+    setFormData({
+      ...formData,
+      url: `http://localhost:5000/uploads/${imageId}` // Actualiza la URL con la imagen seleccionada
+    });
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,24 +36,25 @@ const MediaComponent = () => {
     <Container>
       <Row>
         {/* Columna izquierda (más grande) */}
-        <Col md={8} className="p-3">
+        <Col md={9} className="p-3">
           <Tabs defaultActiveKey="upload" id="media-tabs" className="mb-3 custom-tabs">
             <Tab eventKey="upload" title="Upload">
               <div className="p-3">
-                <UploadImage/>
+                <UploadImage />
               </div>
             </Tab>
             <Tab eventKey="media" title="Media Library">
-              <div className="p-3">
-                <ImageGallery/>
+              <div className="p-3" id='mediaContainer'>
+                <ImageGallery onImageSelect={handleImageSelect} />
               </div>
             </Tab>
           </Tabs>
         </Col>
 
         {/* Columna derecha */}
-        <Col md={4} className="p-3" style={{ borderLeft: '1px solid #ddd' }}>
-          <h2 className="small-text">Formulario</h2>
+        <Col md={3} className="p-3" style={{ borderLeft: '1px solid #ddd' }}>
+          <h4>Featured Image</h4>
+          <img className='featured-image-thumbnail' src={`${formData.url}`} alt="Aqui debe Haber una imagen" />
           <Form onSubmit={handleSubmit} className="p-3">
             <Form.Group controlId="formAlt">
               <Form.Label className="small-text">Alt</Form.Label>
@@ -94,8 +104,8 @@ const MediaComponent = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="small-text">
-              Submit
+            <Button variant="primary" type="submit" className="small-text mt-4">
+              Select featured image
             </Button>
           </Form>
         </Col>

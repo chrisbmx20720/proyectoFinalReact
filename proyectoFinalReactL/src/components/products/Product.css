@@ -1,7 +1,7 @@
 /* Aplica estilo personalizado al Toast */
 .toast-left-full {
     width: 90vw; 
-    height: 80vh;
+    height: 95vh;
     top: 0;
     left: 0;
     margin: 0;
@@ -14,5 +14,6 @@
     font-size: 1.5rem;
     margin-left:40px;
     padding-bottom:30px;
+    overflow-y: auto;
   }
   
