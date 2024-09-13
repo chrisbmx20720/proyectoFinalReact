@@ -4,7 +4,7 @@ import './MediaComponent.css';
 import { UploadImage } from '../test/UploadImage';
 import { ImageGallery } from '../test/ImageGallery';
 
-const MediaComponent = () => {
+const MediaComponent = ({ onImageSubmit }) => {
   const [formData, setFormData] = useState({
     alt: '',
     description: '',
@@ -15,10 +15,10 @@ const MediaComponent = () => {
 
   // Función para manejar la selección de imagen desde ImageGallery
   const handleImageSelect = (imageId) => {
-    // Aquí puedes actualizar el formulario con los detalles de la imagen seleccionada
+   
     setFormData({
       ...formData,
-      url: `http://localhost:5000/uploads/${imageId}` // Actualiza la URL con la imagen seleccionada
+      url: `http://localhost:5000/uploads/${imageId}` 
     });
   };
 
@@ -29,7 +29,7 @@ const MediaComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    onImageSubmit(formData);
   };
 
   return (

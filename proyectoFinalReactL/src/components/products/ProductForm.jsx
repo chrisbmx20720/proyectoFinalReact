@@ -1,13 +1,13 @@
+// ProductForm.js
+
 import React, { useState } from 'react';
 import { Form, Row, Col, Button, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave, faImage } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {ImageGallery} from '../../components/test/ImageGallery';
 import { toast } from 'react-toastify';
-import './Product.css'
-import Media from '../../pages/Admin/Media'
 import MediaComponent from '../media/MediaComponent';
+import './Product.css';
 
 export default function ProductForm() {
   const [product, setProduct] = useState({
@@ -22,15 +22,16 @@ export default function ProductForm() {
     price: '',
     category: '',
     tags: '',
-    imag:{
-      title:'',
+    image: {
+      title: '',
       alt: '',
-      caption:'',
-      description:'',
-      url:''
-    }
+      caption: '',
+      description: '',
+      url: '',
+    },
   });
 
+  // Manejar cambios en los campos de texto, checkbox, etc.
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setProduct({
@@ -39,19 +40,41 @@ export default function ProductForm() {
     });
   };
 
+  // Enviar formulario completo del producto
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Product Submitted:', product);
-    // Aquí puedes manejar la lógica para enviar el producto al backend
+    // Lógica para enviar datos al backend
   };
 
-  const handleFeaturedImage = () =>{
-    toast(<MediaComponent/>, {
-      position: "top-left", // Se posiciona en el lado izquierdo
-      className: 'toast-left-full', // Clase personalizada para el estilo
-      autoClose: false, // No se cierra automáticamente
-    });
-  }
+  // Abrir el selector de imagen destacada (MediaComponent)
+  const handleFeaturedImage = () => {
+    toast(
+      <MediaComponent onImageSubmit={handleImageSubmit} />, // Pasar función para manejar la imagen
+      {
+        position: 'top-left',
+        className: 'toast-left-full',
+        autoClose: false,
+      }
+    );
+  };
+
+  // Actualizar el estado del producto con los datos de la imagen seleccionada
+  const handleImageSubmit = (imageData) => {
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      image: {
+        title: imageData.title,
+        alt: imageData.alt,
+        description: imageData.description,
+        url: imageData.url,
+      },
+    }));
+    
+    toast.dismiss(); // Cerrar el modal del MediaComponent
+    console.log("image selected",product.image.url);
+    
+  };
 
   return (
     <div className="container mt-4">
@@ -160,6 +183,16 @@ export default function ProductForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Image URL</Form.Label>
+              <Form.Control
+                type="text"
+                name="imageUrl"
+                value={product.image.url}
+                readOnly
+              />
+            </Form.Group>
           </Form>
         </Col>
 
@@ -183,7 +216,6 @@ export default function ProductForm() {
                   <option value="electronics">Electronics</option>
                   <option value="fashion">Fashion</option>
                   <option value="home">Home</option>
-                  {/* Agrega más categorías si es necesario */}
                 </Form.Select>
               </Form.Group>
 

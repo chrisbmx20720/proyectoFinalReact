@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ImageGallery.css'; // Importa el archivo CSS personalizado
+import './ImageGallery.css';
+
 
 export function ImageGallery({ onImageSelect }) {
   const [images, setImages] = useState([]);
@@ -23,9 +24,8 @@ export function ImageGallery({ onImageSelect }) {
     fetchImages();
   }, []);
 
-  // Función para manejar el clic en la imagen
   const handleImageClick = (id) => {
-    console.log('ID de la imagen seleccionada:', id);
+
     onImageSelect(id);
   };
 
