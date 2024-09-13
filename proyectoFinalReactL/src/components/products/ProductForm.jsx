@@ -3,6 +3,11 @@ import { Form, Row, Col, Button, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave, faImage } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {ImageGallery} from '../../components/test/ImageGallery';
+import { toast } from 'react-toastify';
+import './Product.css'
+import Media from '../../pages/Admin/Media'
+import MediaComponent from '../media/MediaComponent';
 
 export default function ProductForm() {
   const [product, setProduct] = useState({
@@ -17,6 +22,13 @@ export default function ProductForm() {
     price: '',
     category: '',
     tags: '',
+    imag:{
+      title:'',
+      alt: '',
+      caption:'',
+      description:'',
+      url:''
+    }
   });
 
   const handleChange = (e) => {
@@ -32,6 +44,14 @@ export default function ProductForm() {
     console.log('Product Submitted:', product);
     // Aquí puedes manejar la lógica para enviar el producto al backend
   };
+
+  const handleFeaturedImage = () =>{
+    toast(<MediaComponent/>, {
+      position: "top-left", // Se posiciona en el lado izquierdo
+      className: 'toast-left-full', // Clase personalizada para el estilo
+      autoClose: false, // No se cierra automáticamente
+    });
+  }
 
   return (
     <div className="container mt-4">
@@ -178,7 +198,7 @@ export default function ProductForm() {
                 />
               </Form.Group>
 
-              <Button variant="secondary" className="w-100 mb-3">
+              <Button variant="secondary" className="w-100 mb-3" onClick={handleFeaturedImage}>
                 <FontAwesomeIcon icon={faImage} className="me-2" />
                 Featured Image
               </Button>

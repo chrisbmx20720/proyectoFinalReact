@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './ImageGallery.css'; // Importa el archivo CSS personalizado
 
-export function ImageGallery() {
+export  function ImageGallery() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -31,8 +30,8 @@ export function ImageGallery() {
   };
 
   return (
-    <div className="container mt-5">
-      
+    <div className="container mt-5 pb-4">
+
       {loading && <p className="text-center">Cargando imágenes...</p>}
       {error && <p className="text-center text-danger">{error}</p>}
       <div className="row">
