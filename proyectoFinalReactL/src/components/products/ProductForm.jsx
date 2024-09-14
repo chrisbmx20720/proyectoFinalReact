@@ -20,6 +20,7 @@ export default function ProductForm() {
     isFeatured: false,
     height: '',
     width: '',
+    weight:'',
     price: '',
     category: '',
     tags: '',
@@ -69,7 +70,7 @@ export default function ProductForm() {
     );
   };
 
-  // Actualizar el estado del producto con los datos de la imagen seleccionada
+ 
   const handleImageSubmit = (imageData) => {
     setProduct((prevProduct) => ({
       ...prevProduct,
@@ -81,7 +82,7 @@ export default function ProductForm() {
       },
     }));
     
-    toast.dismiss(); // Cerrar el modal del MediaComponent
+    toast.dismiss();
     console.log("image selected",product.image.url);
     
   };
@@ -240,8 +241,7 @@ export default function ProductForm() {
                 />
               </Form.Group>
 
-              <Button variant="secondary" className="w-100 mb-3" onClick={handleFeaturedImage}>
-                <FontAwesomeIcon icon={faImage} className="me-2" />
+              <Button variant="link" className="w-100 mb-3" onClick={handleFeaturedImage}>
                 Featured Image
               </Button>
 

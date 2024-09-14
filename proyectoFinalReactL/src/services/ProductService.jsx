@@ -24,8 +24,8 @@ export const getProductById = async (id) => {
         throw new Error("Error getting entity");
       }
   
-      const user = await response.json();
-      return user;
+      const product = await response.json();
+      return product;
   
     } catch (error) {
       throw error;
@@ -58,5 +58,56 @@ export const getProductById = async (id) => {
       
       </div>
     );
+}
+
+
+export async function Putproduct(product) {
+
+
+  const productData = product
+
+  try {
+      const response = await fetch(`http://localhost:3000/products/${product.id}`,{
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(productData)
+      });
+  
+      
+      if (!response.ok) {
+          throw new Error(`Error updating product with id ${product.id}`);
+      }
+
+      return { message: `product with id ${product.id} updated successfully` };
+  
+    } catch (error) {
+      throw error;
+    }
+
+}
+
+export async function DeleteProduct(id) {
+
+  try {
+      const response = await fetch(`http://localhost:3000/products/${id}`,{
+
+          method: 'DELETE',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+
+      if (!response.ok) {
+          throw new Error(`Error deleting Product with id ${id}`);
+      }
+
+      return { message: `Product with id ${id} deleted successfully` };
+  
+    } catch (error) {
+      throw error;
+    }
+
 }
 
