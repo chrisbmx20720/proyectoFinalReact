@@ -64,15 +64,6 @@
       "id": "b015"
     },
     {
-      "name": "Diana",
-      "lastname": "Mendoza",
-      "phone": "75648392",
-      "email": "diana.mendoza@gmail.com",
-      "username": "dianam89",
-      "password": "dianam123",
-      "id": "b016"
-    },
-    {
       "name": "Felipe",
       "lastname": "Gonzalez",
       "phone": "71459832",
@@ -118,5 +109,69 @@
       "password": "010101"
     }
   ],
-  "products": []
+  "products": [
+    {
+      "id": "d004",
+      "name": "Pintura Total",
+      "description": "Aqui se hace toda la pintada del automovil bla bla bla",
+      "excerpt": "fegr5yhrghrhreh",
+      "provider": "",
+      "quantity": "",
+      "isFeatured": false,
+      "height": "",
+      "width": "",
+      "weight": "",
+      "price": "250000",
+      "category": "electronics",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "señor con brazos cruzados",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1726238079725-small-business.png"
+      }
+    },
+    {
+      "id": "f53b",
+      "name": "edfsedsdfgb",
+      "description": "sdgsdgsdgdgd",
+      "excerpt": "dgdsdgdgh",
+      "provider": "",
+      "quantity": "",
+      "isFeatured": false,
+      "height": "4",
+      "width": "6",
+      "weight": "",
+      "price": "10",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1726453372624-Home - Koodegras.png"
+      }
+    },
+    {
+      "id": "90bd",
+      "name": "efefefgefe",
+      "description": "etgetegeggeg",
+      "excerpt": "",
+      "provider": "",
+      "quantity": "",
+      "isFeatured": false,
+      "height": "",
+      "width": "",
+      "weight": "",
+      "price": "",
+      "category": "",
+      "tags": "",
+      "image": {
+        "title": "",
+        "alt": "",
+        "description": "",
+        "url": "http://localhost:5000/uploads/1726453587479-Home _ Wilson Smith Group.png"
+      }
+    }
+  ]
 }
