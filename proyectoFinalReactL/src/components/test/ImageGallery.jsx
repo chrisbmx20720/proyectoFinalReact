@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ImageGallery.css';
+import { UploadImage } from './UploadImage';
 
-
-export function ImageGallery({ onImageSelect }) {
+export function ImageGallery() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/images');
-        setImages(response.data);
-      } catch (error) {
-        setError('Error al cargar las imágenes');
-        console.error('Error al obtener imágenes:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Función para actualizar la galería
+  const updateGallery = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/images');
+      setImages(response.data);
+    } catch (error) {
+      setError('Error al cargar las imágenes');
+      console.error('Error al obtener imágenes:', error);
+    }
+  };
 
-    fetchImages();
+  useEffect(() => {
+    updateGallery();
   }, []);
 
   const handleImageClick = (id) => {
-
-    onImageSelect(id);
+    // Aquí podrías manejar el clic en la imagen si es necesario
   };
 
   return (
     <div className="container mt-5 pb-4">
+      <UploadImage updateGallery={updateGallery} />
       {loading && <p className="text-center">Cargando imágenes...</p>}
       {error && <p className="text-center text-danger">{error}</p>}
       <div className="row">

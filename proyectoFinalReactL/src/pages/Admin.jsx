@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Outlet, Link } from 'react-router-dom';
 import '../styles/Admin.css'
+import Users from '../pages/Admin/Users'
 
 const AdminDashboard = () => {
   return (
@@ -44,8 +45,8 @@ const AdminDashboard = () => {
         </div>
 
         {/* Sección derecha */}
-        <div className="col-10 bg-light p-5 content">
-          <Outlet />
+        <div className="col-11 bg-light p-5 content">
+        <Outlet/>
         </div>
       </Container>
     </>

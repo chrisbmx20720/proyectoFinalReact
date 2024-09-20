@@ -24,7 +24,9 @@ export function Routing() {
         <Route element={<ProtectedRoutes/>}>
           <Route path='/admin' element={<Admin/>}>
               <Route path='products' element={<Products />} />
+              <Route path="products/:id" element={<Products/>}/>
               <Route path='users' element={<Users />}/>
+              
               <Route path="users/edit-user/:id" element={<EditUser/>}/> 
               <Route path='media' element={<Media />} />
               <Route path='services' element={<Services />} />
