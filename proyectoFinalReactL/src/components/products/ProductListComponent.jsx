@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { getProducts, DeleteProduct } from '../../services/ProductService';
+import { getProducts, DeleteProduct, GetProductById } from '../../services/ProductService';
 
 export default function ProductListComponent() {
     const [Products, setProducts] = useState([]);
@@ -21,7 +21,7 @@ export default function ProductListComponent() {
     }, []);
 
     const editProduct = (id) => {
-        navigate(`edit-Product/${id}`);
+        navigate(`${id}`);
     };
 
     function CustomToast({ closeToast, onYes, onCancel }) {

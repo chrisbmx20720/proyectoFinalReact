@@ -11,7 +11,7 @@ export const getProducts = async () => {
     }
 };
 
-export const getProductById = async (id) => {
+export const GetProductById = async (id) => {
     try {
       const response = await fetch(`http://localhost:3000/products/${id}`,{
         method: 'GET',

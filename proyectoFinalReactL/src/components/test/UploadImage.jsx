@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-
-export function UploadImage() {
+export function UploadImage({ updateGallery }) {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
 
@@ -27,6 +26,10 @@ export function UploadImage() {
         },
       });
       setMessage(response.data.message);
+
+      
+      updateGallery();
+
     } catch (error) {
       setMessage('Error subiendo la imagen');
       console.error('Error al subir la imagen:', error);

@@ -53,8 +53,8 @@ const MediaComponent = ({ onImageSubmit }) => {
 
         {/* Columna derecha */}
         <Col md={3} className="p-3" style={{ borderLeft: '1px solid #ddd' }}>
-          <h4>Featured Image</h4>
-          <img className='featured-image-thumbnail' src={`${formData.url}`} alt="Aqui debe Haber una imagen" />
+          {formData.url ? <img width="100" height="100" src={formData.url} alt={formData.alt || 'Descripción de la imagen'} /> : <p>Select a featured image below</p>}
+          
           <Form onSubmit={handleSubmit} className="p-3">
             <Form.Group controlId="formAlt">
               <Form.Label className="small-text">Alt</Form.Label>
