@@ -82,15 +82,6 @@
       "id": "b018"
     },
     {
-      "name": "Francisco vaneso",
-      "lastname": "Cortes",
-      "phone": "76548932",
-      "email": "francisco.cortes@gmail.com",
-      "username": "fcortes",
-      "password": "cortespass",
-      "id": "b019"
-    },
-    {
       "id": "8ecd",
       "name": "Manuel",
       "lastname": "Acevedo",
@@ -150,27 +141,6 @@
         "alt": "",
         "description": "",
         "url": "http://localhost:5000/uploads/1726453372624-Home - Koodegras.png"
-      }
-    },
-    {
-      "id": "90bd",
-      "name": "efefefgefe",
-      "description": "etgetegeggeg",
-      "excerpt": "",
-      "provider": "",
-      "quantity": "",
-      "isFeatured": false,
-      "height": "",
-      "width": "",
-      "weight": "",
-      "price": "",
-      "category": "",
-      "tags": "",
-      "image": {
-        "title": "",
-        "alt": "",
-        "description": "",
-        "url": "http://localhost:5000/uploads/1726453587479-Home _ Wilson Smith Group.png"
       }
     }
   ]
