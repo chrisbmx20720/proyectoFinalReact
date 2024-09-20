@@ -82,15 +82,6 @@
       "id": "b018"
     },
     {
-      "name": "Francisco vaneso",
-      "lastname": "Cortes",
-      "phone": "76548932",
-      "email": "francisco.cortes@gmail.com",
-      "username": "fcortes",
-      "password": "cortespass",
-      "id": "b019"
-    },
-    {
       "id": "8ecd",
       "name": "Manuel",
       "lastname": "Acevedo",
@@ -132,23 +123,24 @@
       }
     },
     {
-      "id": "7ee3",
-      "name": "knkk l  ",
-      "description": "",
-      "excerpt": "",
+      "id": "f53b",
+      "name": "edfsedsdfgb",
+      "description": "sdgsdgsdgdgd",
+      "excerpt": "dgdsdgdgh",
       "provider": "",
       "quantity": "",
       "isFeatured": false,
-      "height": "",
-      "width": "",
-      "price": "",
+      "height": "4",
+      "width": "6",
+      "weight": "",
+      "price": "10",
       "category": "",
       "tags": "",
       "image": {
         "title": "",
         "alt": "",
         "description": "",
-        "url": "http://localhost:5000/uploads/1725864783779-local-seo.png"
+        "url": "http://localhost:5000/uploads/1726453372624-Home - Koodegras.png"
       }
     }
   ]
